@@ -1,0 +1,63 @@
+<div class="container-fluid">
+
+  <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+  <!-- Team -->
+  <section id="team" class="pb-5" *ngIf="users">
+    <div class="container-fluid">
+      <h5 class="section-title h1">GitHub Users</h5>
+        <div class="text-center mb-3">
+          <input (keyup)="searchTerm$.next($event.target.value)"  placeholder="search by user">
+        </div>
+
+
+
+      <div class="row">
+        <!-- Team member -->
+        <div class="col-xs-12 col-sm-4 col-md-3" *ngFor="let user of users">
+          <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card">
+                  <div class="card-body text-center">
+                    <p>
+                      <img class=" img-fluid" [src]="user.avatar_url" alt="card image">
+                    </p>
+                    <h4 class="card-title">{{user.login}}</h4>
+                    <p class="card-text">score is a computed value representing the relevance of an item relative to the other items
+                   </p>
+                    <a href="#" class="btn btn-primary btn-sm">
+                      <i class="fa fa-plus"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="backside">
+                <div class="card">
+                  <div class="card-body text-center mt-4">
+                    <h4 class="card-title">Score</h4>
+                    <p class="card-text">score is a computed value representing the relevance of an item relative to the other items list.</p>
+                    <ul class="list-inline">
+                      <li class="list-inline-item">
+                        <h6>Git Repos</h6>
+                        <a class="social-icon text-xs-center"  [routerLink]="['/git-profile', user.login]">
+                          <i class="fa fa-github"></i>
+                        </a>
+                      </li>
+                      <!-- <li class="list-inline-item">
+                        <a class="social-icon text-xs-center" target="_blank" href="#">
+                          <i class="fa fa-google"></i>
+                        </a>
+                      </li> -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Team -->
+
+</div>
